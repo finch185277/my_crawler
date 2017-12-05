@@ -23,3 +23,6 @@ Issue:
 2.here, captcha has four different type.I try each type, but the get was different from the image I watch on browser
 (even I use header to pretend that I am a browser)
     
+The REF:
+
+https://www.youtube.com/watch?v=kYSxf1V-VV4
