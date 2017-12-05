@@ -15,6 +15,7 @@ The code:
 
 4.save each one piece by format([randomint+id].jpg)(randomint in case of same file_name)
   
+
 Issue:
 
 1.I need use ML module like tensorflow, pytorch... to train by data(.jpg we keep)
