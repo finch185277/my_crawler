@@ -2,14 +2,16 @@ import cv2
 import requests
 
 header = {
+    'Cookie':'PHPSESSID=n5c04f3oahfj59g47akjmbku36; citrix_ns_id=jgMWzQJQa1eKrb5p5YEi91UGXoc0002; PHPSESSID=uedofb9g9sp9thae9is1c130d2; __utmt=1; __utma=156794426.953449383.1512136712.1512622159.1512659659.13; __utmb=156794426.20.10.1512659659; __utmc=156794426; __utmz=156794426.1512136712.1.1.utmcsr=(direct)|utmccn=(direct)|utmcmd=(none)',
     'Referer':'https://portal.nctu.edu.tw/portal/login.php',
     'User-Agent':'Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/62.0.3202.94 Safari/537.36'
 }
 with open('pic.php', 'wb') as f:
-    res = requests.get('https://portal.nctu.edu.tw/captcha/pitctest/pic.php', headers = header)#paint
-    #res = requests.get('https://portal.nctu.edu.tw/captcha/securimage/pic.php', headers = header)#snake
-    #res = requests.get('https://portal.nctu.edu.tw/captcha/claviska-simple-php-captcha/simple-php-captcha.php?_CAPTCHA&amp;t=0.14417200+1512459895')#///
-    #res = requests.get('https://portal.nctu.edu.tw/captcha/cool-php-captcha/pic.php')#text
+    #res = requests.get('https://portal.nctu.edu.tw/captcha/pic.php?t=1512570353936', headers = header)
+    res = requests.get('https://portal.nctu.edu.tw/captcha/pitctest/pic.php?t=1512570353936', headers = header)#paint
+    #res = requests.get('https://portal.nctu.edu.tw/captcha/securimage/pic.php/captcha/pic.php?t=1512570353936', headers = header)#snake
+    #res = requests.get('https://portal.nctu.edu.tw/captcha/claviska-simple-php-captcha/simple-php-captcha.php?_CAPTCHA&amp;t=0.26682400+1512572804')#///
+    #res = requests.get('https://portal.nctu.edu.tw/captcha/cool-php-captcha/pic.php?t=1512570353936', headers = header)#text
     f.write(res.content)
 #==========================  nothing  ==============
 from PIL import Image
@@ -35,9 +37,11 @@ cnts = sorted([(c, cv2.boundingRect(c)[0]) for c in contours], key = lambda x:x[
 ary = []
 for (c,_) in cnts:
     (x, y, w, h) = cv2.boundingRect(c)
-    #print(x, y, w, h)
+    print(x, y, w, h)
     if h >= 25 and h <= 32:
         ary.append((x, y, w, h))
+    # if h >= 25 and h <= 45:
+    #     ary.append((x, y, w, h))
 
 print(ary)
 #=========================  split_img + save_img  =======
